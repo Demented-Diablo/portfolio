@@ -6,7 +6,7 @@ function Messages() {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/messages')
+    fetch('https://gavin-backend.onrender.com/api/messages')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
