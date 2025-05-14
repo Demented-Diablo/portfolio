@@ -1,7 +1,7 @@
 /* Responsive wrapper for Hero section */
 .home-hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,6 +21,16 @@
 
 .home-intro {
   z-index: 2;
+}
+
+.home-intro h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin: 0.5rem 0;
+}
+
+.home-intro p {
+  font-size: clamp(1rem, 3.5vw, 1.25rem);
+  margin-top: 1rem;
 }
 
 /* Page wrapper for section spacing */
@@ -170,5 +180,12 @@
 
   .expand-toggle {
     font-size: 0.9rem;
+  }
+  .home-hero {
+    padding: 1.5rem 1rem;
+  }
+
+  .home-intro {
+    margin-top: 1rem;
   }
 }

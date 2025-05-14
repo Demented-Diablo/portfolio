@@ -136,6 +136,7 @@ body::before {
   .content h2 {
     font-size: 1.125rem;
   }
+
 }
 
 @media (max-width: 576px) {
@@ -166,5 +167,12 @@ body::before {
   .footer-content {
     padding: 0.75rem;
     font-size: 0.9rem;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    background-attachment: scroll !important;
+    background-position: top center !important;
   }
 }

@@ -434,3 +434,9 @@
     height: 48px;
   }
 }
+@supports (-webkit-touch-callout: none) {
+  .projects-section {
+    background-attachment: scroll !important;
+    background-position: top center !important;
+  }
+}

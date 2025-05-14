@@ -74,3 +74,9 @@
     padding: 1.25rem;
   }
 }
+@supports (-webkit-touch-callout: none) {
+  .about-section {
+    background-attachment: scroll !important;
+    background-position: center top !important;
+  }
+}

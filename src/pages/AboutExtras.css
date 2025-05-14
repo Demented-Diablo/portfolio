@@ -241,3 +241,9 @@
     font-size: 0.95rem;
   }
 }
+@supports (-webkit-touch-callout: none) {
+  .extras-section {
+    background-attachment: scroll !important;
+    background-position: center top !important;
+  }
+}
