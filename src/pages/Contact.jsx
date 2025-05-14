@@ -29,36 +29,44 @@ function Contact() {
   }, [name, email, subject, message, consent])
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const newErrors = validateFields()
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors)
-      return
-    }
-    setErrors({})
-
-    try {
-      const response = await fetch('https://gavin-backend.onrender.com/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, subject, message })
-      })
-      const data = await response.json()
-      if (data.success) {
-        setFeedback('Message submitted successfully!')
-        localStorage.removeItem('contactDraft')
-        setName('')
-        setEmail('')
-        setSubject('')
-        setMessage('')
-        setConsent(false)
-      } else {
-        setFeedback(data.error || 'Error submitting the form.')
-      }
-    } catch (err) {
-      setFeedback('Server error. Please try again later.')
-    }
+  e.preventDefault()
+  const newErrors = validateFields()
+  if (Object.keys(newErrors).length > 0) {
+    setErrors(newErrors)
+    return
   }
+
+  setErrors({})
+  setFeedback("Sending...")
+
+  try {
+    const response = await fetch("http://localhost:3001/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, subject, message })
+    })
+
+    if (!response.ok) {
+      throw new Error("Server responded with error")
+    }
+
+    const data = await response.json()
+    if (data.success) {
+      setFeedback("Message submitted successfully!")
+      localStorage.removeItem("contactDraft")
+      setName("")
+      setEmail("")
+      setSubject("")
+      setMessage("")
+      setConsent(false)
+    } else {
+      setFeedback(data.error || "Error submitting the form.")
+    }
+  } catch (err) {
+    console.error("Frontend error:", err)
+    setFeedback("Server error. Please try again later.")
+  }
+}
 
   const validateFields = () => {
     let errs = {}

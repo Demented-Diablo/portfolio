@@ -6,7 +6,6 @@ import About from './pages/About'
 import Projects from './pages/Projects'
 import NotFound from './pages/NotFound'
 import Contact from './pages/Contact'
-import Messages from './pages/Messages'
 
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/messages" element={<Messages />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
