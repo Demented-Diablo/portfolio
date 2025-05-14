@@ -194,6 +194,9 @@
   .social-icons i {
     font-size: 2.25rem;
   }
+  .contact-section {
+    background-image: url('https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/phone-bg/contact-phone.png');
+  }
 }
 
 @media (max-width: 480px) {

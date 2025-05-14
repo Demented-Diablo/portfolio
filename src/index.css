@@ -136,6 +136,9 @@ body::before {
   .content h2 {
     font-size: 1.125rem;
   }
+  .body {
+    background: url("https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/phone-bg/setup-art-phone.png");
+  }
 
 }
 

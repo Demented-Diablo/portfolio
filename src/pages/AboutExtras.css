@@ -206,6 +206,9 @@
   .vsco-masonry-column {
     width: 50%;
   }
+  .extras-section{
+    background-image: url('https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/phone-bg/about-phone.png');
+  }
 }
 
 @media (max-width: 576px) {

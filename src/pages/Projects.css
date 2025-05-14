@@ -400,6 +400,9 @@
     width: 60px;
     height: 60px;
   }
+  .project-section{
+    background-image: url('https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/phone-bg/setup-pro-iphone.png');
+  }
 }
 
 @media (max-width: 480px) {
