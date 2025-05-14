@@ -1,51 +1,36 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { ReactTyped } from 'react-typed'
+import './Home.css'
 
 function Home() {
-  const [initialLine, setInitialLine] = useState(true)
-  const [finalText, setFinalText] = useState(false)
-
-  useEffect(() => {
-    setTimeout(() => {
-      setInitialLine(false)
-      setFinalText(true)
-    }, 4000)
-  }, [])
-
   return (
-    <div className="home-hero">
-      <div className="shape-corner top-left"></div>
-      <div className="shape-corner top-right"></div>
-      <div className="shape-corner bottom-left"></div>
-      <div className="shape-corner bottom-right"></div>
-      <div className="home-intro">
-        {initialLine && (
-          <h1>
-            <ReactTyped
-              strings={["Hi, I'm Gavin Sharma"]}
-              typeSpeed={40}
-              backSpeed={0}
-              loop={false}
-            />
-          </h1>
-        )}
-        {finalText && (
-          <h1>
-            <ReactTyped
-              strings={[
-                "Available for a 4-Month Co-op starting September 2025",
-                "Studying Applied Computer Science @ Dalhousie",
-                "Skilled in React, Node.js, Docker, AWS, CI/CD, Java, C#, Swift, Python",
-                "Passionate about building robust web applications & delightful user experiences"
-              ]}
-              typeSpeed={40}
-              backSpeed={0}
-              loop={false}
-            />
-          </h1>
-        )}
+    <section id="home" className="hero-banner">
+      <div className="overlay"></div>
+
+      <div className="content position-relative">
+        <h1 className="fw-bold mb-4" style={{ fontSize: '8rem' }}>
+          Gavin Sharma
+        </h1>
+
+        <h2 className="fw-light" style={{ color: '#FBA435', fontSize: '3rem' }}>
+          <ReactTyped
+            strings={[
+              "Looking for a Fall 2025 co-op that actually challenges me",
+              "I build full-stack apps that don’t fall apart under pressure",
+              "Most productive when I’ve got code, coffee, and a controller nearby",
+              "Not a fan of bloated UIs or broken APIs—so I fix them"
+            ]}
+            typeSpeed={40}
+            backSpeed={20}
+            loop
+          />
+        </h2>
       </div>
-    </div>
+
+      <div className="scroll-cue position-absolute bottom-0 mb-4">
+        <span className="scroll-arrow">↓</span>
+      </div>
+    </section>
   )
 }
 

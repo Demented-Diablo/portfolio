@@ -1,0 +1,51 @@
+.hero-banner {
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* 🔥 Key to make it static */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+}
+
+
+
+.content {
+  z-index: 2;
+  max-width: 800px;
+  padding: 2rem;
+  text-align: center;
+  will-change: transform;
+}
+
+.scroll-cue {
+  z-index: 2;
+  animation: fadeBounce 2s ease-in-out infinite;
+  font-size: 4rem;
+  color: #ccc;
+}
+
+@keyframes fadeBounce {
+  0%, 100% { opacity: 0.2; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(10px); }
+}
+
+.hero-banner h1,
+.hero-banner h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 576px) {
+  .content h1 {
+    font-size: 2.5rem;
+  }
+  .content h2 {
+    font-size: 1rem;
+  }
+}

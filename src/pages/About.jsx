@@ -1,56 +1,31 @@
-import React, { useState } from 'react'
+import React from 'react'
+import './LandingPage.css'
+import './About.css'
 
 function About() {
-  const [expanded, setExpanded] = useState(false)
-  const [expandedExtra, setExpandedExtra] = useState(false)
-
   return (
-    <div className="page-wrapper">
-      <div className="shape-corner top-left"></div>
-      <div className="shape-corner top-right"></div>
-      <div className="shape-corner bottom-left"></div>
-      <div className="shape-corner bottom-right"></div>
-      <h2 className="section-title">About Me</h2>
-      <p>
-        I'm Gavin Sharma, an Applied Computer Science student at Dalhousie (Expected Apr 2026),
-        recognized on the Dean’s List (Winter 2024). I enjoy solving challenging problems and embracing
-        modern tech stacks.
-      </p>
-      <p>
-        I value collaborative work environments and have consistently met deadlines for academic, volunteer,
-        and open-source projects. I look forward to opportunities where I can sharpen my skills and bring
-        new ideas to life.
-      </p>
-      <div className="code-block">
-        <p>aboutMe = &#123;</p>
-        <p>&nbsp;&nbsp;coOpStatus: "Available (Sept 2025)",</p>
-        <p>&nbsp;&nbsp;education: "BAppCS, Dalhousie University",</p>
-        <p>&nbsp;&nbsp;technicalSkills: [ "React", "Node.js", "Docker", "AWS", "CI/CD", "Python", "C#", "Swift", "Java" ],</p>
-        <p>&nbsp;&nbsp;softSkills: [ "Team Collaboration", "Problem-Solving", "Time Management", "Adaptability" ],</p>
-        <p>&nbsp;&nbsp;location: "Halifax, NS",</p>
-        <p>&nbsp;&nbsp;contact: &#123; phone: "902-989-5486", email: "Gavin.Sharma@dal.ca" &#125;</p>
-        <p>&#125;</p>
+    <div className="about-section">
+      <div className="about-content">
+        <h2 className="about-heading"> About Me</h2>
+        <p>
+          Hi, I'm Gavin Sharma, a Bachelor of Applied Computer Science student at Dalhousie University,
+          actively looking for a 4-month co-op opportunity starting Fall 2025.
+        </p>
+        <p>
+          I build clean, responsive full-stack applications that actually work — no bloated UI, no broken APIs.
+          From leading a team on the TranSECT project to designing browser tools like Resume Radar, I’ve worked
+          across the stack using tools like React, Node.js, Java, C#, Docker, and AWS.
+        </p>
+        <p>
+          But I’m not just code and caffeine. I’m a gamer who unwinds with Valorant, GTA V, Genshin Impact,
+          and Palworld. I’m learning electric guitar after years with an acoustic, and I enjoy capturing life
+          through my lens — you’ll find my shots on VSCO.
+        </p>
+        <p>
+          This site is more than a portfolio — it’s a space where my work and interests meet. If you're looking
+          for a developer who codes with curiosity and creates with personality, scroll on.
+        </p>
       </div>
-      {!expanded && (
-        <a className="expand-toggle" onClick={() => setExpanded(true)}>
-          More Background
-        </a>
-      )}
-      {expanded && (
-        <div className="collapsible-content">
-          <p>
-            Over the past semesters, I've contributed to legacy code refactoring, bug fixes,
-            and feature expansions. I thrive on continuous learning, exploring new frameworks,
-            and pushing boundaries in software development.<br></br>
-            I’ve taken part in multiple Hackathons, focusing on accessibility and innovation.
-                My approach emphasizes maintainable code, thorough testing, and user-centric design.
-                When not coding, I enjoy reading up on AI advances, practicing guitar, and
-                finding ways to automate everyday tasks.
-          </p>
-          
-          
-        </div>
-      )}
     </div>
   )
 }

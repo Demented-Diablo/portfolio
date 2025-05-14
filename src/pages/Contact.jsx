@@ -1,5 +1,7 @@
-// src/pages/Contact.jsx
 import React, { useState, useEffect } from 'react'
+import './LandingPage.css'
+import './Contact.css'
+import 'devicon/devicon.min.css'
 
 function Contact() {
   const [name, setName] = useState('')
@@ -7,7 +9,6 @@ function Contact() {
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
   const [consent, setConsent] = useState(false)
-
   const [errors, setErrors] = useState({})
   const [feedback, setFeedback] = useState('')
 
@@ -28,126 +29,93 @@ function Contact() {
     localStorage.setItem('contactDraft', JSON.stringify(draft))
   }, [name, email, subject, message, consent])
 
-  const handleSubmit = async (e) => {
-  e.preventDefault()
-  const newErrors = validateFields()
-  if (Object.keys(newErrors).length > 0) {
-    setErrors(newErrors)
-    return
-  }
-
-  setErrors({})
-  setFeedback("Sending...")
-
-  try {
-    const response = await fetch("http://localhost:3001/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, subject, message })
-    })
-
-    if (!response.ok) {
-      throw new Error("Server responded with error")
-    }
-
-    const data = await response.json()
-    if (data.success) {
-      setFeedback("Message submitted successfully!")
-      localStorage.removeItem("contactDraft")
-      setName("")
-      setEmail("")
-      setSubject("")
-      setMessage("")
-      setConsent(false)
-    } else {
-      setFeedback(data.error || "Error submitting the form.")
-    }
-  } catch (err) {
-    console.error("Frontend error:", err)
-    setFeedback("Server error. Please try again later.")
-  }
-}
-
   const validateFields = () => {
     let errs = {}
     if (!name.trim()) errs.name = 'Name is required.'
     if (!email.trim()) errs.email = 'Email is required.'
     if (!subject.trim()) errs.subject = 'Subject is required.'
     if (!message.trim()) errs.message = 'Message is required.'
-    if (!consent) errs.consent = 'You must consent to be contacted.'
+    if (!consent) errs.consent = 'Consent is required.'
     return errs
   }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const newErrors = validateFields()
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors)
+      return
+    }
+
+    setErrors({})
+    setFeedback('Sending...')
+
+    try {
+      const response = await fetch("https://gavin-backend.onrender.com/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, subject, message })
+      })
+
+      const data = await response.json()
+      if (data.success) {
+        setFeedback('Message submitted successfully!')
+        localStorage.removeItem('contactDraft')
+        setName('')
+        setEmail('')
+        setSubject('')
+        setMessage('')
+        setConsent(false)
+      } else {
+        setFeedback(data.error || 'Something went wrong.')
+      }
+    } catch (err) {
+      console.error(err)
+      setFeedback('Server error. Try again later.')
+    }
+  }
+
   return (
-    <div className="container my-5">
-      <h1>Contact Me</h1>
-      <form onSubmit={handleSubmit} noValidate>
-        <div className="mb-3">
-          <label className="form-label" htmlFor="contactName">Name</label>
-          <input
-            id="contactName"
-            type="text"
-            className={`form-control ${errors.name ? 'is-invalid' : ''}`}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          {errors.name && <div className="invalid-feedback">{errors.name}</div>}
+    <div className="contact-section">
+      <div className="contact-content">
+        <h2 className="contact-heading">Contact Me</h2>
+        <form onSubmit={handleSubmit} noValidate>
+          <label>Name</label>
+          <input type="text" value={name} onChange={e => setName(e.target.value)} className={errors.name ? 'error' : ''} />
+          {errors.name && <div className="error-msg">{errors.name}</div>}
+
+          <label>Email</label>
+          <input type="email" value={email} onChange={e => setEmail(e.target.value)} className={errors.email ? 'error' : ''} />
+          {errors.email && <div className="error-msg">{errors.email}</div>}
+
+          <label>Subject</label>
+          <input type="text" value={subject} onChange={e => setSubject(e.target.value)} className={errors.subject ? 'error' : ''} />
+          {errors.subject && <div className="error-msg">{errors.subject}</div>}
+
+          <label>Message</label>
+          <textarea rows="4" value={message} onChange={e => setMessage(e.target.value)} className={errors.message ? 'error' : ''}></textarea>
+          {errors.message && <div className="error-msg">{errors.message}</div>}
+
+          <div className="form-check">
+            <input type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)} />
+            <label>I consent to be contacted and for my info to be stored securely.</label>
+          </div>
+          {errors.consent && <div className="error-msg">{errors.consent}</div>}
+
+          <button type="submit">Send</button>
+        </form>
+
+        {feedback && <div className="feedback-msg">{feedback}</div>}
+
+        <div className="social-icons">
+          <a href="https://linkedin.com/in/gsharma06" target="_blank" rel="noopener noreferrer">
+            <i className="devicon-linkedin-plain colored"></i>
+          </a>
+          <a href="https://github.com/Demented-Diablo" target="_blank" rel="noopener noreferrer">
+            <i className="devicon-github-original colored"></i>
+          </a>
         </div>
-
-        <div className="mb-3">
-          <label className="form-label" htmlFor="contactEmail">Email</label>
-          <input
-            id="contactEmail"
-            type="email"
-            className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {errors.email && <div className="invalid-feedback">{errors.email}</div>}
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label" htmlFor="contactSubject">Subject</label>
-          <input
-            id="contactSubject"
-            type="text"
-            className={`form-control ${errors.subject ? 'is-invalid' : ''}`}
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-          />
-          {errors.subject && <div className="invalid-feedback">{errors.subject}</div>}
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label" htmlFor="contactMessage">Message</label>
-          <textarea
-            id="contactMessage"
-            className={`form-control ${errors.message ? 'is-invalid' : ''}`}
-            rows="4"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          {errors.message && <div className="invalid-feedback">{errors.message}</div>}
-        </div>
-
-        <div className="form-check mb-3">
-          <input
-            id="consentCheck"
-            type="checkbox"
-            className={`form-check-input ${errors.consent ? 'is-invalid' : ''}`}
-            checked={consent}
-            onChange={(e) => setConsent(e.target.checked)}
-          />
-          <label className="form-check-label" htmlFor="consentCheck">
-            I consent to be contacted and for my info to be stored securely.
-          </label>
-          {errors.consent && <div className="invalid-feedback d-block">{errors.consent}</div>}
-        </div>
-
-        <button className="btn btn-primary" type="submit">Send</button>
-      </form>
-
-      {feedback && <div className="alert alert-info mt-3">{feedback}</div>}
+      </div>
     </div>
   )
 }
