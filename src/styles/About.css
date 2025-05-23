@@ -16,10 +16,10 @@
 .about-content {
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(6px);
-  font-size: 3rem;
-  padding: 1rem;
+  font-size: 2rem;
+  padding: 2rem;
   border-radius: 12px;
-  max-width: 1600px;
+  max-width: 1200px;
   width: 100%;
   animation: fade-in-up 1s ease-out both;
 }

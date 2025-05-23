@@ -20,7 +20,7 @@
 
 .project-card {
   flex: 0 0 auto;
-  width: 600px;
+  width: 400px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   padding: 1rem;
@@ -31,11 +31,11 @@
   width: 100%;
   border-radius: 12px;
   object-fit: cover;
-  height: 400px;
+  height: 300px;
 }
 .project-card h3 {
   margin-top: 0.75rem;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 .project-card:hover {
   transform: scale(1.05);
@@ -200,7 +200,7 @@
   color: #e0e0e0;
 }
 .project-section.skills-highlight h3 {
-  font-size: 5rem;
+  font-size: 3rem;
   margin-bottom: 1.25rem;
   color: #ffffff;
 }
@@ -209,12 +209,12 @@
   padding-left: 1.75rem;
 }
 .project-section.skills-highlight ul li {
-  font-size: 2.5rem;
+  font-size: 2rem;
   line-height: 1.9;
   margin-bottom: 1.25rem;
 }
 .project-section.skills-highlight ul li strong {
-  font-size: 3rem;
+  font-size: 2,5rem;
   color: #fbbf24;
 }
 .project-section.skills-highlight ul li em {
