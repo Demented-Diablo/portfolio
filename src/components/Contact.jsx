@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import './LandingPage.css'
-import './Contact.css'
+import '../styles/LandingPage.css'
+import '../styles/Contact.css'
 import 'devicon/devicon.min.css'
 
 function Contact() {

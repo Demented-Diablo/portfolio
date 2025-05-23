@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FaSteam, FaGamepad } from 'react-icons/fa'
 import { SiEpicgames, SiVsco } from 'react-icons/si'
-import './AboutExtras.css'
+import '../styles/AboutExtras.css'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, FreeMode, Mousewheel } from 'swiper/modules'
 import 'swiper/css'
@@ -9,6 +9,8 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/mousewheel'
 import Masonry from 'react-masonry-css'
+import gsap from 'gsap'
+
 
 const games = [
   {
@@ -89,14 +91,35 @@ const games = [
 
 function AboutExtras() {
     const [enableMousewheel, setEnableMousewheel] = useState(false)
+    const [renderExtras, setRenderExtras] = useState(false)
+    useEffect(() => {
+    // Allow DOM to settle before rendering heavy elements
+    const timeout = setTimeout(() => setRenderExtras(true), 50)
+    return () => clearTimeout(timeout)
+  }, [])
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
             setEnableMousewheel(window.innerWidth >= 768)
+            const timeout = setTimeout(() => {
+              window.dispatchEvent(new Event('resize'))
+            }, 100)
         }
     }, [])
+    useEffect(() => {
+    if (renderExtras) {
+      gsap.from('.extras-section', {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: 'power3.out'
+      })
+    }
+  }, [renderExtras])
+
+  if (!renderExtras) return null
   return (
-    <div className="extras-section text-white">
+    <>
       <h2 className="extras-heading text-center mb-4">🎮 Games I Love</h2>
       <Swiper
         modules={[Navigation, Pagination, FreeMode, Mousewheel]}
@@ -123,12 +146,12 @@ function AboutExtras() {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="game-ids text-center mt-8">
+      <div className="text-center">
         <a 
             href="https://steamcommunity.com/id/CURSED06/" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="text-white bg-[#171a21] px-4 py-2 rounded-lg hover:bg-[#1b1f2a] transition"
+            className="account-btn"
         >
             <FaSteam size={24} />
             Steam
@@ -137,7 +160,7 @@ function AboutExtras() {
             href="https://launcher.store.epicgames.com/u/da6d5f57bc454378a618a663f33a6d5f" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="text-white bg-[#171a21] px-4 py-2 rounded-lg hover:bg-[#1b1f2a] transition"
+            className="account-btn"
         >
             <SiEpicgames size={24} />
             Epic Games
@@ -156,19 +179,19 @@ function AboutExtras() {
             <img key={idx} src={src} alt={`VSCO ${idx}`} className="vsco-img" />
           ))}
         </Masonry>
-        <div className="vsco-link text-center mt-8">
+        <div className="text-center">
             <a 
                 href="https://vsco.co/badigoldflake/gallery" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-yellow-400 hover:underline text-lg"
+                className="account-btn"
             >
-                <SiVsco size={24} />
+                <SiVsco size={70} />
                 VSCO
             </a>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

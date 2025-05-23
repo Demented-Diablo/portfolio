@@ -1,0 +1,29 @@
+/* ===== Code block (if directly used in LandingPage.jsx) ===== */
+.code-block {
+  background-color: #1b1b1b;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin: 2rem auto;
+  font-family: 'Source Code Pro', monospace;
+  line-height: 1.6;
+  color: #dcdcdc;
+  max-width: 800px;
+}
+
+/* ===== Responsive Tweak (only if code-block stays) ===== */
+@media (max-width: 992px) {
+  .code-block {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 768px) {
+  .code-block {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 576px) {
+  .code-block {
+    font-size: 0.85rem;
+  }
+}

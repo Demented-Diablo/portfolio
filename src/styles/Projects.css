@@ -1,3 +1,4 @@
+/* === Main Projects Section === */
 .projects-section {
   padding: 4rem 2rem;
   position: relative;
@@ -7,13 +8,6 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  font-family: 'Bebas Neue', sans-serif;
-  margin-bottom: 2rem;
-  color: #fbbf24;
 }
 
 .carousel {
@@ -26,35 +20,33 @@
 
 .project-card {
   flex: 0 0 auto;
-  width: 280px;
+  width: 600px;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 1rem;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
-
 .project-card img {
   width: 100%;
   border-radius: 12px;
   object-fit: cover;
-  height: 160px;
+  height: 400px;
 }
-
 .project-card h3 {
   margin-top: 0.75rem;
-  font-size: 1.2rem;
+  font-size: 3rem;
 }
-
 .project-card:hover {
   transform: scale(1.05);
 }
 
+/* === Overlay View === */
 .project-overlay {
   font-size: 1.1rem;
   line-height: 1.8;
   color: #f0f0f0;
-  padding-top: 6rem; /* Push content below navbar */
+  padding-top: 6rem;
   padding-inline: 2rem;
   position: fixed;
   inset: 0;
@@ -65,7 +57,7 @@
   z-index: 999;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Start from top */
+  align-items: flex-start;
   overflow-y: auto;
   opacity: 0;
   transform: scale(0.95);
@@ -88,7 +80,6 @@
 
 .overlay-title {
   font-size: 3.5rem;
-  font-family: 'Bebas Neue', sans-serif;
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -155,7 +146,6 @@
   justify-content: center;
   gap: 1rem;
 }
-
 .links a {
   background-color: #fbbf24;
   padding: 0.6rem 1.2rem;
@@ -165,7 +155,6 @@
   color: black;
   transition: background-color 0.2s ease;
 }
-
 .links a:hover {
   background-color: #facc15;
 }
@@ -180,7 +169,6 @@
   border: none;
   cursor: pointer;
 }
-
 .back-btn-fixed {
   position: fixed;
   left: 1rem;
@@ -194,97 +182,58 @@
   z-index: 1000;
   cursor: pointer;
 }
-
-.back-btn-fixed:hover {
-  background-color: #ffc66e;
-}
-
+.back-btn-fixed:hover,
 .back-btn:hover {
   background-color: #ffc66e;
 }
 
-
-/* === Skill Highlights Glass Section === */
+/* === Skills Highlight Section === */
 .project-section.skills-highlight {
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(12px);
-  padding: 2rem 2.5rem 1.5rem 1.5rem; 
+  padding: 2rem 2.5rem 1.5rem 1.5rem;
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 6px 40px rgba(0, 0, 0, 0.2);
-  margin-top: 2.5rem;
-  margin-right: 800px;
+  margin: 2.5rem;
   color: #e0e0e0;
 }
-
 .project-section.skills-highlight h3 {
-  font-size: 1.75rem;
+  font-size: 5rem;
   margin-bottom: 1.25rem;
   color: #ffffff;
 }
-
 .project-section.skills-highlight ul {
   list-style-type: disc;
   padding-left: 1.75rem;
-  margin: 0;
 }
-
 .project-section.skills-highlight ul li {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   line-height: 1.9;
   margin-bottom: 1.25rem;
-  max-width: 900px;
 }
-
 .project-section.skills-highlight ul li strong {
-  font-size: 2rem;
+  font-size: 3rem;
   color: #fbbf24;
 }
-
 .project-section.skills-highlight ul li em {
   font-style: italic;
   color: #a8dadc;
 }
 
-/* === Responsive Tweak === */
-@media (max-width: 768px) {
-  .project-section.skills-highlight {
-    padding: 1.5rem;
-  }
-
-  .project-section.skills-highlight ul li {
-    font-size: 0.95rem;
-  }
-
-  .project-section.skills-highlight ul li strong {
-    font-size: 1.05rem;
-  }
-}
-
-/* === Marquee Banner === */
+/* === Marquee Section === */
 .marquee {
   overflow: hidden;
   position: relative;
   width: 100%;
   margin-bottom: 2rem;
 }
-
 .marquee-content {
   display: flex;
-  animation: scroll-marquee 10s linear infinite;
+  animation: scrollMarquee 10s linear infinite;
   gap: 2rem;
 }
-
-@keyframes scroll-marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
 .skill-icon {
   flex: 0 0 auto;
   width: 80px;
@@ -296,44 +245,35 @@
   justify-content: center;
   transition: transform 0.3s ease;
 }
-
 .skill-icon:hover {
   transform: scale(1.1);
 }
-/* ------------------------------------- */
-/*           MOBILE + TABLET FIXES       */
-/* ------------------------------------- */
 
-@media (max-width: 1024px) {
+/* === Responsive Fixes === */
+/* ===== Small Desktop / Laptop (≤992px) ===== */
+@media (max-width: 992px) {
   .overlay-title {
     font-size: 2.5rem;
   }
-
   .overlay-content {
     font-size: 1.05rem;
     padding: 2rem 1.5rem;
   }
-
   .project-details {
     font-size: 0.9rem;
   }
-
   .project-card {
     width: 240px;
   }
-
   .project-section.skills-highlight {
-    margin-right: 0; /* Remove fixed margin */
+    margin-right: 0;
   }
-
   .project-section.skills-highlight ul li {
     font-size: 1.25rem;
   }
-
   .project-section.skills-highlight ul li strong {
     font-size: 1.5rem;
   }
-
   .back-btn-fixed {
     top: 1rem;
     left: 1rem;
@@ -342,104 +282,91 @@
   }
 }
 
+/* ===== Tablet (≤768px) ===== */
 @media (max-width: 768px) {
   .projects-section {
     padding: 3rem 1.25rem;
   }
-
   .carousel {
     gap: 0.75rem;
     padding-bottom: 1rem;
   }
-
   .project-card {
     width: 90vw;
   }
-
   .project-card h3 {
     font-size: 1rem;
   }
-
   .project-overlay {
     padding-top: 5rem;
     padding-inline: 1rem;
   }
-
   .overlay-title {
     font-size: 2.25rem;
   }
-
   .overlay-content {
     padding: 1.5rem;
   }
-
   .project-tech {
     gap: 0.4rem;
   }
-
   .tech-tag {
     font-size: 0.8rem;
     padding: 0.4rem 0.8rem;
   }
-
   .links {
     flex-direction: column;
     gap: 0.75rem;
   }
-
   .links a {
     width: 100%;
     text-align: center;
   }
-
   .marquee-content {
     gap: 1rem;
   }
-
   .skill-icon {
     width: 60px;
     height: 60px;
   }
-  .project-section{
+  .project-section {
     background-image: url('https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/phone-bg/setup-pro-iphone.png');
   }
 }
 
-@media (max-width: 480px) {
+/* ===== Phone (≤576px) ===== */
+@media (max-width: 576px) {
   .overlay-title {
     font-size: 2rem;
   }
-
   .project-description {
     font-size: 0.95rem;
   }
-
   .project-details {
     font-size: 0.85rem;
   }
-
   .overlay-content ul {
     flex-wrap: wrap;
     gap: 0.25rem;
   }
-
+  .project-section.skills-highlight {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(1px);
+  }
+  .project-section.skills-highlight h3 {
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+  color: #ffffff;
+  }
   .project-section.skills-highlight ul li {
     font-size: 1rem;
     line-height: 1.7;
   }
-
   .project-section.skills-highlight ul li strong {
-    font-size: 1.2rem;
+    font-size: 1.2rem ;
   }
-
   .skill-icon {
     width: 48px;
     height: 48px;
-  }
-}
-@supports (-webkit-touch-callout: none) {
-  .projects-section {
-    background-attachment: scroll !important;
-    background-position: top center !important;
   }
 }

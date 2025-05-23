@@ -1,6 +1,6 @@
 import React from 'react'
 import { ReactTyped } from 'react-typed'
-import './Home.css'
+import '../styles/Home.css'
 
 function Home() {
   return (
@@ -20,8 +20,9 @@ function Home() {
               "Most productive when I’ve got code, coffee, and a controller nearby",
               "Not a fan of bloated UIs or broken APIs—so I fix them"
             ]}
-            typeSpeed={40}
+            typeSpeed={30}
             backSpeed={20}
+            backDelay={2500}
             loop
           />
         </h2>

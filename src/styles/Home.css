@@ -1,0 +1,21 @@
+.hero-banner {
+  position: relative;
+  height: 100vh;
+  background: url("https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images//setup-art.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+}
+
+.scroll-cue {
+  z-index: 2;
+  animation: fadeBounce 2s ease-in-out infinite;
+  font-size: 4rem;
+  color: #ccc;
+}

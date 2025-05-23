@@ -1,38 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
-import './Projects.css'
+import '../styles/Projects.css'
 import 'devicon/devicon.min.css'
 
 const projects = [
-  {
-    title: 'Gambit – Brain-Controlled Gaming for Accessibility',
-    image: 'https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images//gambit.png',
-    description: `An EEG-controlled Unity game developed for users with limited mobility, allowing brainwave interaction using Muse and OpenMaze.`,
-    techStack: ['Unity', 'C#', 'Docker', 'OpenMaze', 'LSL', 'Git', 'CI/CD'],
-    github: '',
-    live: '',
-    objective: 'To explore the power of brain-computer interface (BCI) technology in gaming accessibility by enabling interaction through EEG signals.',
-    role: 'Junior Developer — 8-member team (4 juniors, 2 seniors, 1 technical director, 1 scrum master)',
-    features: [
-      `In the first two weeks, I was onboarded into a large, multi-semester Unity project. My first task was to thoroughly read and understand the legacy codebase, OpenMaze architecture, and Lab Streaming Layer (LSL) documentation. This early immersion helped me develop a strong grasp on scene isolation practices, configuration standards, and collaboration conventions.`,
-      `Once I became familiar with the project structure, I focused on debugging critical errors in the Unity console. I resolved multiple instances of NullReferenceException, UnassignedReferenceException, and MissingComponentException. For example, I fixed one NullReferenceException caused by an unassigned Tilemap object and another by attaching a missing CharacterController to the wall object. I maintained detailed notes for every bug resolved to support future contributors.`,
-      `To improve testing efficiency, I created JSON config files that allowed developers to jump directly into Levels 2 and 3. Previously, the only way to reach these levels was to play through the game from the beginning. My configurations significantly accelerated our workflow.`,
-      `One major task involved reworking Level 1, as requested by the client. The original design was too convoluted, so I redesigned it to be more linear and player-friendly while maintaining its platforming identity. This work required thoughtful placement of terrain and obstacles and extensive playtesting.`,
-      `To enhance gameplay, I introduced a gem-based checkpoint system. These collectible gems served as save points — when players fell, they would respawn at the last collected gem rather than starting from the beginning. This improved user experience and showcased my understanding of persistent data in Unity.`,
-      `Later, I proposed and designed a completely new level — a true 3D maze. Unlike other levels that relied on linear platforming, my maze level promoted spatial exploration and pathfinding. The team accepted my proposal, and I implemented it from scratch.`,
-      `To make the maze more challenging, I added patrolling enemy assets. They had basic movement and rotation behaviors, forcing players to time their movements and avoid collisions.`,
-      `I also contributed to our CI/CD setup. I containerized the Unity build process using Docker, which allowed us to test and deploy builds from any branch reliably. I managed branches such as ‘bugFix’, ‘configFiles’, and ‘levelRedesign’, and followed Git best practices to ensure clean version control.`
-    ],
-    skills: [
-      'Unity Debugging & Scene Architecture',
-      'OpenMaze Integration & Scene Configuration',
-      'Level Design & UX Reworking',
-      'Game Mechanics: Checkpoints, Enemies',
-      'CI/CD Pipeline with Docker',
-      'Documentation & Collaboration',
-      'Git Branching & Version Control'
-    ]
-  },
   {
     title: 'TranSECT – Coastal Automation',
     image: 'https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images//transect.png',
@@ -63,6 +34,35 @@ const projects = [
       'File Upload Handling (Multer)',
       'Mentoring & GitHub Practices',
       'Cross-Team Debugging & Documentation'
+    ]
+  },
+  {
+    title: 'Gambit – Brain-Controlled Gaming for Accessibility',
+    image: 'https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images//gambit.png',
+    description: `An EEG-controlled Unity game developed for users with limited mobility, allowing brainwave interaction using Muse and OpenMaze.`,
+    techStack: ['Unity', 'C#', 'Docker', 'OpenMaze', 'LSL', 'Git', 'CI/CD'],
+    github: '',
+    live: '',
+    objective: 'To explore the power of brain-computer interface (BCI) technology in gaming accessibility by enabling interaction through EEG signals.',
+    role: 'Junior Developer — 8-member team (4 juniors, 2 seniors, 1 technical director, 1 scrum master)',
+    features: [
+      `In the first two weeks, I was onboarded into a large, multi-semester Unity project. My first task was to thoroughly read and understand the legacy codebase, OpenMaze architecture, and Lab Streaming Layer (LSL) documentation. This early immersion helped me develop a strong grasp on scene isolation practices, configuration standards, and collaboration conventions.`,
+      `Once I became familiar with the project structure, I focused on debugging critical errors in the Unity console. I resolved multiple instances of NullReferenceException, UnassignedReferenceException, and MissingComponentException. For example, I fixed one NullReferenceException caused by an unassigned Tilemap object and another by attaching a missing CharacterController to the wall object. I maintained detailed notes for every bug resolved to support future contributors.`,
+      `To improve testing efficiency, I created JSON config files that allowed developers to jump directly into Levels 2 and 3. Previously, the only way to reach these levels was to play through the game from the beginning. My configurations significantly accelerated our workflow.`,
+      `One major task involved reworking Level 1, as requested by the client. The original design was too convoluted, so I redesigned it to be more linear and player-friendly while maintaining its platforming identity. This work required thoughtful placement of terrain and obstacles and extensive playtesting.`,
+      `To enhance gameplay, I introduced a gem-based checkpoint system. These collectible gems served as save points — when players fell, they would respawn at the last collected gem rather than starting from the beginning. This improved user experience and showcased my understanding of persistent data in Unity.`,
+      `Later, I proposed and designed a completely new level — a true 3D maze. Unlike other levels that relied on linear platforming, my maze level promoted spatial exploration and pathfinding. The team accepted my proposal, and I implemented it from scratch.`,
+      `To make the maze more challenging, I added patrolling enemy assets. They had basic movement and rotation behaviors, forcing players to time their movements and avoid collisions.`,
+      `I also contributed to our CI/CD setup. I containerized the Unity build process using Docker, which allowed us to test and deploy builds from any branch reliably. I managed branches such as ‘bugFix’, ‘configFiles’, and ‘levelRedesign’, and followed Git best practices to ensure clean version control.`
+    ],
+    skills: [
+      'Unity Debugging & Scene Architecture',
+      'OpenMaze Integration & Scene Configuration',
+      'Level Design & UX Reworking',
+      'Game Mechanics: Checkpoints, Enemies',
+      'CI/CD Pipeline with Docker',
+      'Documentation & Collaboration',
+      'Git Branching & Version Control'
     ]
   },
   {
