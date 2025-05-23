@@ -229,6 +229,9 @@
   .vsco-section {
     padding: 2rem 1rem;
   }
+  .extras-section{
+    background: none;
+  }
 
   .extras-heading,
   .vsco-heading {

@@ -19,6 +19,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  min-height: 100%;
   overflow-x: hidden;
 }
 
@@ -46,6 +47,38 @@ body {
   z-index: -1;
   pointer-events: none;
 }
+#vanta-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: -100;
+  display: none;
+}
+
+#vanta-bg {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@media (max-width: 576px) {
+  #vanta-wrapper {
+    display: block;
+  }
+
+  body {
+    background: none !important;
+  }
+}
+
+
+body {
+  background: none !important; /* Disable your desktop background on mobile */
+}
+
+#global-bg-overlay {
+  background: rgba(0, 0, 0, 0.4); /* Optional tweak for readability */
+}
+
 
 /* iOS background fix */
 @supports (-webkit-touch-callout: none) {

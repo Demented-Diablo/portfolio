@@ -4,7 +4,7 @@
   position: relative;
   color: white;
   overflow-x: hidden;
-  background-image: url('https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/setup-pro.png');
+  background: url('https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/setup-pro.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -336,6 +336,9 @@
 
 /* ===== Phone (≤576px) ===== */
 @media (max-width: 576px) {
+  .projects-section {
+    background: none;
+  }
   .overlay-title {
     font-size: 2rem;
   }

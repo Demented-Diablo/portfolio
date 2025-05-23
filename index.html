@@ -4,12 +4,45 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images//portfolio10.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Gavin Sharma</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div id="vanta-wrapper">
+      <div id="vanta-bg"></div>
+    </div>
     <div id="global-bg-overlay"></div>
     <div id="root"></div>
+
     <script type="module" src="/src/main.jsx"></script>
-  </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const isMobile = window.matchMedia("(max-width: 576px)").matches;
+
+        if (isMobile) {
+          requestAnimationFrame(() => {
+            VANTA.FOG({
+              el: "#vanta-bg",
+              mouseControls: false,
+              touchControls: false,
+              gyroControls: false,
+              scale: 1.0,
+              scaleMobile: 1.0,
+              highlightColor: 0x9c27b0,
+              midtoneColor: 0x4a185a,
+              lowlightColor: 0x1c0927,
+              baseColor: 0x0a0f1c,
+              speed: 1.5, 
+              shininess: 30,
+              waveHeight: 20,
+              waveSpeed: 0.8,
+              zoom: 0.85
+            });
+          });
+        }
+      });
+    </script>
+</body>
 </html>

@@ -3,7 +3,7 @@
   position: relative;
   min-height: 100vh;
   width: 100%;
-  background-image: url('https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images//contact-zoomed-out.png');
+  background: url('https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images//contact-zoomed-out.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -144,6 +144,9 @@ input[type="checkbox"] {
 }
 
 @media (max-width: 576px) {
+  .contact-section {
+    background: none;
+  }
   .contact-heading {
     font-size: 2.25rem;
   }

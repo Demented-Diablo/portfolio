@@ -19,3 +19,8 @@
   font-size: 4rem;
   color: #ccc;
 }
+@media (max-width: 576px) {
+  .hero-banner{
+    background: none;
+  }
+}
