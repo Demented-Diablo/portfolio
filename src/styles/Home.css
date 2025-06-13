@@ -12,6 +12,14 @@
   text-align: center;
   z-index: 1;
 }
+.hero-banner h2 {
+  background: var(--overlay-bg); /* dark tinted overlay */
+  backdrop-filter: blur(10px);    /* glass effect */
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
 
 .scroll-cue {
   z-index: 2;
@@ -19,6 +27,7 @@
   font-size: 4rem;
   color: #ccc;
 }
+
 @media (max-width: 576px) {
   .hero-banner{
     background: none;
