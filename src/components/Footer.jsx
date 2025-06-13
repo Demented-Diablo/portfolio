@@ -8,7 +8,7 @@ function Footer() {
           <span className="footer-icon">⚡</span> © {new Date().getFullYear()} Gavin Sharma • Built with React + Vite
         </p>
         <p>
-          Designed with ❤️ and powered by Supabase, GSAP, and creativity.
+          Designed with ❤️ and powered by Supabase, GSAP, AWS cloud magic (S3, Route 53, HTTPS), and a bit of caffeine-fueled creativity.
         </p>
       </div>
     </footer>

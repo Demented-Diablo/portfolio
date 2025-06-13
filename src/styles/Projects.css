@@ -10,13 +10,43 @@
   background-attachment: fixed;
 }
 
+.carousel-wrapper {
+  position: relative;
+}
+
 .carousel {
   display: flex;
-  gap: 1rem;
   overflow-x: auto;
-  padding-bottom: 1rem;
   scroll-behavior: smooth;
+  padding: 1rem 2rem; /* Give some padding so arrows don't cover cards */
 }
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  z-index: 2;
+  user-select: none;
+  backdrop-filter: blur(4px);
+}
+
+.carousel-nav.left {
+  left: 0;
+}
+
+.carousel-nav.right {
+  right: 0;
+}
+
 
 .project-card {
   flex: 0 0 auto;
@@ -371,5 +401,17 @@
   .skill-icon {
     width: 48px;
     height: 48px;
+  }
+  .carousel::after {
+    content: "← swipe →";
+    position: absolute;
+    bottom: -1.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    color: #aaa;
+    opacity: 0.7;
+    animation: swipePulse 2s infinite;
+    pointer-events: none;
   }
 }

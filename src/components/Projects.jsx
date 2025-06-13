@@ -115,6 +115,29 @@ const projects = [
       'Keyword Matching & Resume Analysis',
       'Repo Modularity & Documentation'
     ]
+  },
+  {
+    title: 'AWS Certified Cloud Practitioner',
+    image: 'https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images//certificate.png', 
+    description: 'Official certificate earned from Amazon Web Services for foundational cloud knowledge.',
+    techStack: ['AWS', 'Cloud Fundamentals', 'S3', 'EC2', 'IAM'],
+    github: '',
+    live: 'https://www.credly.com/badges/de1b30bb-4430-4b0e-aa7c-dbbd70cefd4f', // optional, link to Credly badge
+    objective: 'Showcase foundational understanding of AWS services, cloud deployment, and architecture best practices.',
+    role: 'Individual Achievement — Certified by Amazon Web Services',
+    features: [
+      `Earned the AWS Certified Cloud Practitioner credential by demonstrating foundational knowledge of AWS services and global infrastructure.`,
+      `Studied cloud concepts, core AWS services like EC2, S3, and RDS, and best practices related to security, billing, and support.`,
+      `Used these skills to deploy personal projects using S3 static hosting, Route 53 DNS, and IAM-based secure configurations.`,
+      `Received official digital badge and PDF certificate from AWS via Credly.`
+    ],
+    skills: [
+      'Cloud Concepts & Global Infrastructure',
+      'S3, EC2, Route 53, IAM',
+      'Deployment & Permissions',
+      'AWS Billing & Pricing Models',
+      'Security & Shared Responsibility Model'
+    ]
   }
 ]
 
@@ -166,15 +189,23 @@ function ProjectsAndSkills() {
   return (
     <div className="projects-section">
       <h2 className="section-title">🚀 Projects & More</h2>
-      <div className="carousel" ref={scrollRef}>
-        {projects.map((proj, idx) => (
-          <div className="project-card" key={idx} onClick={() => setActiveProject(proj)}>
-            <img src={proj.image} alt={proj.title} />
-            <h3>{proj.title}</h3>
-          </div>
-        ))}
+      <div className="carousel-wrapper">
+        <div className="carousel" ref={scrollRef}>
+          {projects.map((proj, idx) => (
+            <div className="project-card" key={idx} onClick={() => setActiveProject(proj)}>
+              <img src={proj.image} alt={proj.title} />
+              <h3>{proj.title}</h3>
+              <p className="click-to-know">Click to know more</p>
+            </div>
+          ))}
+        </div>
+        <div className="carousel-nav left" onClick={() => scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' })}>
+          ◀
+        </div>
+        <div className="carousel-nav right" onClick={() => scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' })}>
+          ▶
+        </div>
       </div>
-
       {activeProject && (
         <button className="back-btn-fixed" onClick={() => setActiveProject(null)}>← Back</button>
       )}
@@ -268,7 +299,7 @@ function ProjectsAndSkills() {
           </li>
           <li>
             <strong>AWS & Cloud Skills:</strong>
-            Currently preparing for the <em>AWS Certified Cloud Practitioner</em> exam (scheduled May 2025). Applying cloud deployment practices in ongoing personal projects.
+             Earned the <em>AWS Certified Cloud Practitioner</em> certificate and currently applying cloud deployment practices in personal projects, including use of S3, Route 53, and `.env` configuration on hosted apps.
           </li>
         </ul>
       </div>
