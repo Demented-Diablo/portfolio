@@ -11,7 +11,7 @@ function Home() {
         <h2 className="fw-light" style={{ color: '#FBA435', fontSize: '3rem', }}>
           <ReactTyped
             strings={[
-              "Looking for a Fall 2025 co-op that actually challenges me",
+              "Software engineer focused on building reliable backend and cloud systems",
               "I build full-stack apps that don’t fall apart under pressure",
               "Most productive when I’ve got code, coffee, and a controller nearby",
               "Not a fan of bloated UIs or broken APIs—so I fix them"

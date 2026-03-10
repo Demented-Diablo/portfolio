@@ -2,92 +2,161 @@ import React, { useState, useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import '../styles/Projects.css'
 import 'devicon/devicon.min.css'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import { useLocation } from 'react-router-dom'
 
 const projects = [
   {
-    title: 'TranSECT – Coastal Automation',
-    image: 'https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images//transect.png',
-    description: 'Automated weather and plant data processing for citizen scientists on Nova Scotia’s Eastern Shore.',
+    title: 'DeeBug - ML Pipeline Debugger',
+    image: 'https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/Deebug.jpg',
+    description: 'Platform for executing and inspecting machine learning pipelines with dataset persistence and reusable execution environments.',
+    techStack: ['React', 'Python', 'Flask', 'Supabase', 'Docker'],
+    github: '',
+    live: 'https://deebug.dev/',
+    objective: 'Enable developers to run and inspect machine learning pipelines while managing datasets across experiments.',
+    role: 'Development Director in a multi member engineering team responsible for system architecture and backend design.',
+    features: [
+      'Designed dataset persistence architecture allowing datasets to be reused across experiments.',
+      'Implemented backend APIs that manage dataset lifecycle states such as selected, unsaved, and saved.',
+      'Integrated Supabase storage to persist datasets and retrieve them during execution.',
+      'Collaborated with a multi member team using GitLab and Agile sprint planning.',
+      'Focused on system architecture for machine learning experimentation environments.'
+    ],
+    skills: [
+      'Backend Architecture',
+      'API Design',
+      'Supabase Storage',
+      'Dataset Persistence Systems',
+      'Agile Development'
+    ]
+  },
+  {
+    title: 'TranSECT - Coastal Data Automation',
+    image: 'https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/transect.png',
+    description: 'Automated weather and plant data processing platform built for citizen scientists on Nova Scotia’s Eastern Shore.',
     techStack: ['Node.js', 'React', 'MongoDB', 'API Integration'],
     github: 'https://github.com/Demented-Diablo/transect',
     live: '',
-    objective: 'Automate and simplify coastal data collection, plant identification, and weather logging for citizen scientists.',
-    role: 'Senior Developer — 8-member team (4 juniors, 2 seniors, 1 tech director, 1 scrum master)',
+    objective: 'Automate coastal data collection, plant identification, and weather logging for citizen scientists.',
+    role: 'Senior Developer in an 8 member team responsible for backend services, API integrations, and deployment.',
     features: [
-      `As a senior developer on the TranSECT project, my goal was to empower citizen scientists on Nova Scotia’s Eastern Shore by making coastal data collection seamless, automated, and user-friendly.`,
-      `My first priority was backend development. I set up an Express.js server, hosted on a Linux-based VPS, using PM2 for process management and SSH/SCP for deployment. This involved configuring routes, middleware, and database models using Mongoose.`,
-      `I integrated the Wunderground API to automate weather data collection. This included logic to fetch hourly and daily readings like rainfall and temperature and transform that into a clean MongoDB schema. The data was parsed and stored with timestamps for later visualization.`,
-      `For the flora data pipeline, I integrated the PlantNet API. Users uploaded plant images, which were processed via Multer. My backend logic then sent those images to the PlantNet endpoint, parsed the returned confidence scores, and only stored high-confidence matches into MongoDB, alongside metadata like scientific name and image ID.`,
-      `I designed and documented the following API routes:
-        - /api/weather (automated fetch and save)
-        - /api/plants/upload (handle image uploads)
-        - /api/plants/identify (query PlantNet)
-        - /api/data/save (store valid identifications)`,
-      `I mentored junior developers by creating a GitHub onboarding task. I initialized the repo with a main and development branch, walked them through Git Bash commands (clone, branch, commit, push, PR), and helped them resolve merge conflicts. This was my first formal experience mentoring — and it paid off.`,
-      `While the frontend was not my main focus, I assisted in making the plant upload interface more responsive and ensured backend integration went smoothly. I debugged a few form issues and helped sync expectations between teams.`,
-      `All environment variables were stored in .env, but due to project constraints, I temporarily hardcoded API keys — with approval. I completed backend deployment and wrote a full deployment manual.`
+      'Built the Express.js backend and designed MongoDB data models for weather and plant datasets.',
+      'Integrated the Wunderground API to automatically collect rainfall and temperature data.',
+      'Implemented plant identification workflow using the PlantNet API and image uploads handled through Multer.',
+      'Designed backend API routes for weather ingestion, plant uploads, and validated data storage.',
+      'Deployed backend services on a Linux server using SSH and PM2 for process management.',
+      'Mentored junior developers by creating Git onboarding tasks and establishing branching workflows.'
     ],
     skills: [
-      'API Integration (Wunderground + PlantNet)',
-      'Express Routing + MongoDB Modeling',
-      'Backend Deployment (SSH, PM2)',
-      'File Upload Handling (Multer)',
-      'Mentoring & GitHub Practices',
-      'Cross-Team Debugging & Documentation'
+      'API Integration with Wunderground and PlantNet',
+      'Express Backend Architecture',
+      'MongoDB Data Modeling with Mongoose',
+      'Linux Deployment using SSH and PM2',
+      'File Upload Processing with Multer',
+      'Team Mentoring and Git Workflow Management'
     ]
   },
   {
-    title: 'Gambit – Brain-Controlled Gaming for Accessibility',
-    image: 'https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images//gambit.png',
-    description: `An EEG-controlled Unity game developed for users with limited mobility, allowing brainwave interaction using Muse and OpenMaze.`,
+    title: 'Gambit - Brain Controlled Accessibility Game',
+    image: 'https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/gambit.png',
+    description: 'EEG controlled Unity game that allows players to interact using brainwave signals through Muse and OpenMaze.',
     techStack: ['Unity', 'C#', 'Docker', 'OpenMaze', 'LSL', 'Git', 'CI/CD'],
     github: '',
     live: '',
-    objective: 'To explore the power of brain-computer interface (BCI) technology in gaming accessibility by enabling interaction through EEG signals.',
-    role: 'Junior Developer — 8-member team (4 juniors, 2 seniors, 1 technical director, 1 scrum master)',
+    objective: 'Explore how brain computer interface technology can improve gaming accessibility for players with limited mobility.',
+    role: 'Junior Developer in an 8 member team contributing to debugging, level design, and CI workflows.',
     features: [
-      `In the first two weeks, I was onboarded into a large, multi-semester Unity project. My first task was to thoroughly read and understand the legacy codebase, OpenMaze architecture, and Lab Streaming Layer (LSL) documentation. This early immersion helped me develop a strong grasp on scene isolation practices, configuration standards, and collaboration conventions.`,
-      `Once I became familiar with the project structure, I focused on debugging critical errors in the Unity console. I resolved multiple instances of NullReferenceException, UnassignedReferenceException, and MissingComponentException. For example, I fixed one NullReferenceException caused by an unassigned Tilemap object and another by attaching a missing CharacterController to the wall object. I maintained detailed notes for every bug resolved to support future contributors.`,
-      `To improve testing efficiency, I created JSON config files that allowed developers to jump directly into Levels 2 and 3. Previously, the only way to reach these levels was to play through the game from the beginning. My configurations significantly accelerated our workflow.`,
-      `One major task involved reworking Level 1, as requested by the client. The original design was too convoluted, so I redesigned it to be more linear and player-friendly while maintaining its platforming identity. This work required thoughtful placement of terrain and obstacles and extensive playtesting.`,
-      `To enhance gameplay, I introduced a gem-based checkpoint system. These collectible gems served as save points — when players fell, they would respawn at the last collected gem rather than starting from the beginning. This improved user experience and showcased my understanding of persistent data in Unity.`,
-      `Later, I proposed and designed a completely new level — a true 3D maze. Unlike other levels that relied on linear platforming, my maze level promoted spatial exploration and pathfinding. The team accepted my proposal, and I implemented it from scratch.`,
-      `To make the maze more challenging, I added patrolling enemy assets. They had basic movement and rotation behaviors, forcing players to time their movements and avoid collisions.`,
-      `I also contributed to our CI/CD setup. I containerized the Unity build process using Docker, which allowed us to test and deploy builds from any branch reliably. I managed branches such as ‘bugFix’, ‘configFiles’, and ‘levelRedesign’, and followed Git best practices to ensure clean version control.`
+      'Debugged major Unity runtime errors including NullReferenceException and MissingComponentException.',
+      'Studied OpenMaze and Lab Streaming Layer architecture to understand EEG data flow and scene interaction.',
+      'Created JSON configuration files that allowed developers to quickly load Levels 2 and 3 for testing.',
+      'Redesigned Level 1 to improve navigation and reduce unnecessary complexity.',
+      'Implemented gameplay features including checkpoint gems and respawn mechanics.',
+      'Designed and built a new 3D maze level with patrolling enemy behavior.',
+      'Helped implement Docker based CI workflows for automated Unity builds.'
     ],
     skills: [
-      'Unity Debugging & Scene Architecture',
-      'OpenMaze Integration & Scene Configuration',
-      'Level Design & UX Reworking',
-      'Game Mechanics: Checkpoints, Enemies',
-      'CI/CD Pipeline with Docker',
-      'Documentation & Collaboration',
-      'Git Branching & Version Control'
+      'Unity Debugging and Scene Architecture',
+      'OpenMaze and EEG Integration',
+      'Level Design and Gameplay Mechanics',
+      'CI Workflows with Docker',
+      'Git Branching and Version Control',
+      'Technical Documentation and Collaboration'
     ]
   },
   {
-    title: 'Dal Social App',
-    image: 'https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images//dalsm.png',
-    description: 'Private social platform for Dalhousie students built using Spring Boot and React.',
+    title: 'Dal Social - Student Social Platform',
+    image: 'https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/dalsm.png',
+    description: 'Private social platform built for Dalhousie students using React and Spring Boot.',
     techStack: ['React', 'Spring Boot', 'WebSockets', 'MySQL'],
     github: 'https://github.com/Demented-Diablo/DalSM',
     live: '',
-    objective: 'Enable Dalhousie students to connect, share posts, and interact in a secure, campus-specific environment.',
-    role: 'Full-stack Developer — team of 6',
+    objective: 'Enable Dalhousie students to connect, share posts, and interact in a secure campus specific environment.',
+    role: 'Full stack developer in a 6 member team responsible for backend APIs and frontend integration.',
     features: [
-      `This project was a semester-long full-stack collaboration to build a closed community social platform for Dalhousie University students.`,
-      `On the backend, I built a Spring Boot REST API to handle login, signup, post creation, and post retrieval. I also implemented secure user authentication, ensuring only valid students could register and participate. Spring Security and JPA/Hibernate were key tools here.`,
-      `For the frontend, I designed the entire flow in React. I built reusable components like PostCard, FeedPage, LoginPage, etc., and integrated them with the backend via fetch/axios. I managed user state carefully to reflect authenticated vs. unauthenticated behavior.`,
-      `I handled key debugging challenges such as CORS errors, misconfigured API routes, broken form validations, and login failures. These helped strengthen my full-stack development problem-solving.`,
-      `Midway through the project, we faced a major issue. One of our teammates delayed their feature for over a month. During the final push, they attempted to merge their long-stale branch without first pulling from the updated develop branch. This introduced numerous conflicts that risked breaking the main project.`,
-      `To resolve the issue, I worked overnight with my teammate Ishant. We assessed what could be salvaged, reviewed all merge conflicts, and carefully synced the branches. The next day, in our team meeting, we established clear Git rules and a merge protocol moving forward — including daily commits and mandatory pulls before pushing.`
+      'Built Spring Boot REST APIs for authentication, post creation, and post retrieval.',
+      'Implemented secure user login and registration using Spring Security and JPA.',
+      'Developed React components for feed pages, login flows, and post interactions.',
+      'Connected frontend and backend using API requests and managed authenticated user state.',
+      'Debugged issues including CORS errors, broken API routes, and form validation problems.',
+      'Resolved major Git merge conflicts during the final integration phase and helped establish better team Git workflows.'
     ],
     skills: [
-      'Full-stack Development (React + Spring Boot)',
-      'REST API Design + Authentication',
-      'State Management & Component Architecture',
-      'Debugging (CORS, Routing, Auth)',
-      'Git Conflict Resolution & Team Coordination'
+      'Full stack development with React and Spring Boot',
+      'REST API design and authentication systems',
+      'State management and component architecture',
+      'Debugging CORS and API integration issues',
+      'Git collaboration and conflict resolution'
+    ]
+  },
+  {
+    title: 'DownloadSorter - Python File Automation Tool',
+    image: 'https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/Sorter.png',
+    description: 'Python automation tool that monitors the Downloads folder and organizes files into categorized directories.',
+    techStack: ['Python', 'Watchdog', 'Win10Toast', 'File System Automation'],
+    github: 'https://github.com/Demented-Diablo/DownloadSorter',
+    live: '',
+    objective: 'Automatically organize files in the Downloads folder to keep the workspace clean and structured.',
+    role: 'Solo Developer responsible for automation logic, file classification, and system notifications.',
+    features: [
+      'Implemented real time file monitoring using the watchdog library.',
+      'Automatically categorizes files into folders such as PDFs, Images, Videos, Documents, and Archives.',
+      'Added one time cleanup mode for organizing existing files in the Downloads directory.',
+      'Integrated toast notifications to inform users when files are moved.',
+      'Implemented collision handling to prevent file overwrites and maintain safe operations.'
+    ],
+    skills: [
+      'Python Automation',
+      'File System Monitoring',
+      'Event Driven Programming',
+      'Desktop Notifications',
+      'Utility Tool Development'
+    ]
+  },
+  {
+    title: 'Eng2Term - English to Terminal Command Tool',
+    image: 'https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/EngTerm.jpg',
+    description: 'Web tool that converts plain English instructions into Linux terminal commands.',
+    techStack: ['React', 'Node.js', 'OpenRouter API', 'GPT-3.5 Turbo', 'Render'],
+    github: 'https://github.com/Demented-Diablo/eng2term',
+    live: 'https://lnkd.in/emSvMJff',
+    objective: 'Help developers quickly translate natural language instructions into terminal commands they may not remember.',
+    role: 'Solo Developer responsible for API integration, prompt logic, and deployment.',
+    features: [
+      'Built a minimal web interface that converts natural language instructions into terminal commands.',
+      'Integrated GPT-3.5 Turbo through OpenRouter to generate accurate command outputs.',
+      'Designed prompt structure to produce concise and executable Linux commands.',
+      'Deployed the tool using Render for public access and testing.'
+    ],
+    skills: [
+      'LLM API Integration',
+      'Prompt Design',
+      'Node.js Backend Development',
+      'Frontend Interface Design',
+      'Cloud Deployment with Render'
     ]
   },
   {
@@ -161,6 +230,11 @@ function ProjectsAndSkills() {
   const [activeProject, setActiveProject] = useState(null)
   const overlayRef = useRef(null)
   const scrollRef = useRef(null)
+  const location = useLocation()
+
+  useEffect(() => {
+  setActiveProject(null)
+}, [location])
 
   useEffect(() => {
     document.body.style.overflow = activeProject ? 'hidden' : 'auto'
@@ -189,23 +263,31 @@ function ProjectsAndSkills() {
   return (
     <div className="projects-section">
       <h2 className="section-title">🚀 Projects & More</h2>
-      <div className="carousel-wrapper">
-        <div className="carousel" ref={scrollRef}>
-          {projects.map((proj, idx) => (
-            <div className="project-card" key={idx} onClick={() => setActiveProject(proj)}>
+      <Swiper
+        modules={[Navigation, Pagination]}
+        spaceBetween={30}
+        centeredSlides={true}
+        loop={true}
+        navigation
+        pagination={{ clickable: true }}
+        breakpoints={{
+          0: { slidesPerView: 1 },
+          640: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+          1400: { slidesPerView: 4 }
+        }}
+      >
+        {projects.map((proj, idx) => (
+          <SwiperSlide key={idx}>
+            <div className="project-card" onClick={() => setActiveProject(proj)}>
               <img src={proj.image} alt={proj.title} />
               <h3>{proj.title}</h3>
               <p className="click-to-know">Click to know more</p>
             </div>
-          ))}
-        </div>
-        <div className="carousel-nav left" onClick={() => scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' })}>
-          ◀
-        </div>
-        <div className="carousel-nav right" onClick={() => scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' })}>
-          ▶
-        </div>
-      </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
       {activeProject && (
         <button className="back-btn-fixed" onClick={() => setActiveProject(null)}>← Back</button>
       )}
@@ -271,36 +353,44 @@ function ProjectsAndSkills() {
       </div>
 
       <div className="project-section skills-highlight">
-        <h3>💡 Skill Highlights (with Context)</h3>
+        <h3> Skill Highlights</h3>
         <ul>
+
           <li>
-            <strong>Full-Stack Development (React, Node.js, Spring Boot, MongoDB, MySQL):</strong>
-            Built and deployed multiple full-stack applications — including the <em>Dal Social App</em> (React + Spring Boot + MySQL) and <em>Resume Radar</em> (React + Node.js + MongoDB) — with secure authentication and dynamic data flow between client and server.
+            <strong>Full Stack Development (React, Node.js, Spring Boot, MongoDB, MySQL):</strong>
+            Built and deployed multiple full stack applications including <em>Dal Social App</em> (React + Spring Boot + MySQL) and <em>Resume Radar</em> (React + Node.js + MongoDB) with secure authentication and dynamic client server data flow.
           </li>
+
           <li>
-            <strong>API Integration & Data Automation:</strong>
-            Integrated Wunderground and PlantNet APIs in the <em>TranSECT</em> project to automate weather and flora data processing. Used Multer for file handling, added validation layers, and persisted data using Mongoose.
+            <strong>API Integration and Data Automation:</strong>
+            Integrated Wunderground and PlantNet APIs in the <em>TranSECT</em> platform to automate weather and flora data processing. Implemented file uploads with Multer and persisted structured data using Mongoose.
           </li>
+
           <li>
-            <strong>CI/CD & DevOps (Git, Docker, PM2, SSH):</strong>
-            Set up Docker-based CI/CD pipelines in <em>Gambit</em> to automate Unity game builds. Deployed the <em>TranSECT</em> backend to a Linux server using SSH, PM2 for process management, and `.env` files for environment configs.
+            <strong>DevOps and Deployment (Git, Docker, PM2, SSH):</strong>
+            Built Docker based CI workflows in <em>Gambit</em> and deployed the <em>TranSECT</em> backend to a Linux server using SSH and PM2 with environment configuration through .env variables.
           </li>
+
           <li>
             <strong>Game Development (Unity, C#, OpenMaze):</strong>
-            Redesigned level architecture and debugging workflows in the <em>Gambit</em> EEG-controlled game. Implemented custom checkpoint logic, enemy pathfinding, and dynamic level loading through JSON config files.
+            Redesigned level architecture and debugging workflows in the <em>Gambit</em> EEG controlled game. Implemented checkpoint systems, enemy movement logic, and JSON based level loading.
           </li>
+
           <li>
-            <strong>Resume Analysis & NLP:</strong>
-            Developed <em>Resume Radar</em>, a smart job preparation tool that parses PDF/DOCX resumes, compares them with job descriptions using keyword scoring, and outputs match analysis — showcasing frontend logic, backend parsing, and modular architecture.
+            <strong>AI Tools and NLP Applications:</strong>
+            Built projects such as <em>Resume Radar</em> and <em>Eng2Term</em> that analyze text inputs and generate structured outputs using keyword analysis and language model APIs.
           </li>
+
           <li>
-            <strong>Teamwork & Mentoring:</strong>
-            Acted as a senior developer and mentor in the <em>TranSECT</em> project, onboarding 4 junior developers. Led Git training sessions and conflict resolution practices to streamline collaboration in a multi-branch setup.
+            <strong>Team Leadership and Mentoring:</strong>
+            Served as a senior developer in the <em>TranSECT</em> project mentoring four junior developers and establishing Git workflows and collaboration practices for a multi branch team environment.
           </li>
+
           <li>
-            <strong>AWS & Cloud Skills:</strong>
-             Earned the <em>AWS Certified Cloud Practitioner</em> certificate and currently applying cloud deployment practices in personal projects, including use of S3, Route 53, and `.env` configuration on hosted apps.
+            <strong>AWS and Cloud Infrastructure:</strong>
+            Earned the <em>AWS Certified Cloud Practitioner</em> certification and applied cloud deployment practices using S3 hosting, Route 53 DNS configuration, and environment variable management.
           </li>
+
         </ul>
       </div>
     </div>

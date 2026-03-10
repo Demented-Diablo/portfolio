@@ -9,16 +9,26 @@
   background-position: center;
   background-attachment: fixed;
 }
+.section-title {
+  font-size: clamp(2.2rem, 3vw, 3rem);
+  text-align: center;
+  margin-bottom: 2rem;
+}
 
 .carousel-wrapper {
   position: relative;
+  padding-inline: 3rem;
 }
 
 .carousel {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 1rem 2rem; /* Give some padding so arrows don't cover cards */
+  padding: 1rem 2rem;
+  gap: 1.25rem;
+
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
 }
 
 .carousel-nav {
@@ -50,18 +60,20 @@
 
 .project-card {
   flex: 0 0 auto;
-  width: 400px;
+  width: 320px;
   background: var(--overlay-bg);
   border-radius: 12px;
   padding: 1rem;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.25s ease;
+  will-change: transform;
 }
+
 .project-card img {
   width: 100%;
-  border-radius: 12px;
+  height: 200px;
   object-fit: cover;
-  height: 300px;
+  border-radius: 12px;
 }
 .project-card h3 {
   margin-top: 0.75rem;
@@ -76,47 +88,66 @@
   font-size: 1.1rem;
   line-height: 1.8;
   color: #f0f0f0;
-  padding-top: 6rem;
-  padding-inline: 2rem;
+
   position: fixed;
   inset: 0;
+
   background-image: url('https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/setup-pro.png');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
+
   z-index: 999;
+
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  overflow-y: auto;
+  align-items: center;
+
+  overflow: auto;
+
   opacity: 0;
   transform: scale(0.95);
   pointer-events: none;
+
   transition: opacity 0.3s ease, transform 0.3s ease;
-  scroll-behavior: smooth;
 }
 
 .overlay-content {
-  width: 100%;
-  max-width: 900px;
+  width: min(1100px, 92vw);
+  height: min(85vh, 850px);
+
   background: rgba(15, 15, 15, 0.65);
-  padding: 3rem 2rem;
-  border-radius: 1rem;
-  margin: 2rem auto;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  padding: 2rem 2rem;
+  border-radius: 18px;
+
   color: white;
   position: relative;
-  font-size: 1.25rem;
+
+  font-size: 1.1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+
+  overflow-y: auto;
 }
 
 .overlay-title {
-  font-size: 3.5rem;
+  grid-column: 1 / 3;
+  font-size: clamp(2rem, 3vw, 3rem);
   margin-bottom: 1rem;
   text-align: center;
 }
 
 .overlay-image {
+  grid-row: 2 / 4;
   width: 100%;
-  height: auto;
+  max-height: 340px;
+  object-fit: cover;
   border-radius: 10px;
   margin-bottom: 1.5rem;
 }
@@ -137,6 +168,7 @@
 }
 
 .project-description {
+  grid-column: 1 / 3;
   font-size: 1.05rem;
   margin-bottom: 1rem;
   text-align: center;
@@ -172,6 +204,7 @@
 }
 
 .links {
+  grid-column: 1 / 3;
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -219,32 +252,44 @@
 
 /* === Skills Highlight Section === */
 .project-section.skills-highlight {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255,255,255,0.06);
   backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 2rem 2.5rem 1.5rem 1.5rem;
+
+  max-width: 900px;
+  margin: 3rem auto;
+
+  padding: 2rem 2rem;
+
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 6px 40px rgba(0, 0, 0, 0.2);
-  margin: 2.5rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 6px 40px rgba(0,0,0,0.2);
+
   color: #e0e0e0;
 }
 .project-section.skills-highlight h3 {
-  font-size: 3rem;
-  margin-bottom: 1.25rem;
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
   color: #ffffff;
 }
 .project-section.skills-highlight ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem 2rem;
+
   list-style-type: disc;
-  padding-left: 1.75rem;
+  padding-left: 1.4rem;
+
+  max-width: 750px;
+  margin: 0 auto;
 }
 .project-section.skills-highlight ul li {
-  font-size: 2rem;
-  line-height: 1.9;
-  margin-bottom: 1.25rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
 }
 .project-section.skills-highlight ul li strong {
-  font-size: 2,5rem;
+  font-size: 1.2rem;
   color: #fbbf24;
 }
 .project-section.skills-highlight ul li em {
@@ -400,21 +445,43 @@
     flex-wrap: wrap;
     gap: 0.25rem;
   }
-  .project-section.skills-highlight {
-  background: var(--overlay-bg);
-  backdrop-filter: blur(1px);
+    .project-section.skills-highlight {
+      font-size: initial;
+      background: var(--overlay-bg);
+      backdrop-filter: blur(1px);
+      max-width: 100%;
+      margin: 1.5rem auto;
+      padding: 1rem 0.9rem;
+      border-radius: 14px;
   }
+
   .project-section.skills-highlight h3 {
-  font-size: 2rem;
-  margin-bottom: 1.25rem;
-  color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 0.9rem;
+    text-align: center;
+    color: #ffffff;
   }
+
+  .project-section.skills-highlight ul {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    max-width: 100%;
+    padding-left: 1rem;
+    margin: 0;
+  }
+
   .project-section.skills-highlight ul li {
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 0.2rem;
   }
+
   .project-section.skills-highlight ul li strong {
-    font-size: 1.2rem ;
+    font-size: 1rem;
+  }
+
+  .project-section.skills-highlight ul li em {
+    font-size: 0.92rem;
   }
   .skill-icon {
     width: 48px;
@@ -431,5 +498,69 @@
     opacity: 0.7;
     animation: swipePulse 2s infinite;
     pointer-events: none;
+  }
+  /* ===== Mobile Project Overlay Optimization ===== */
+
+  .overlay-content {
+    height: auto;
+    max-height: 90vh;
+    padding: 1.2rem 1rem;
+    gap: 0.6rem;
+  }
+
+  /* shrink the project image heavily */
+  .overlay-image {
+    max-height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+  }
+
+  /* or if you prefer removing the image completely, use this instead */
+  /*
+  .overlay-image {
+    display: none;
+  }
+  */
+
+  .overlay-title {
+    font-size: 1.4rem;
+    line-height: 1.3;
+    margin-bottom: 0.4rem;
+  }
+
+  /* compress project description */
+  .project-description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
+  }
+
+  /* make each section compact */
+  .project-section {
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+  }
+
+  /* reduce list spacing */
+  .project-section p {
+    margin-bottom: 0.3rem;
+  }
+
+  /* shrink skill pills */
+  .overlay-content li {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  /* make buttons reachable faster */
+  .links {
+    margin-top: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .links a {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
   }
 }

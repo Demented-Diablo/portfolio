@@ -16,17 +16,17 @@
 .about-content {
   background: var(--overlay-bg);
   backdrop-filter: blur(6px);
-  font-size: 2rem;
+  font-size: 1.1rem;
   padding: 2rem;
   border-radius: 12px;
-  max-width: 1200px;
+  max-width: 850px;
   width: 100%;
   animation: fade-in-up 1s ease-out both;
   font-family: var(--font-main);
 }
 
 .about-heading {
-  font-size: 5rem;
+  font-size: 3rem;
   margin-bottom: 1.5rem;
   color: #FBA435;
   font-family: var(--primary-font);
@@ -63,60 +63,107 @@
 
 
 /* ---------- RESPONSIVE STYLES: ABOUT ---------- */
+
 /* ===== Small Desktop / Laptop (≤992px) ===== */
 @media (max-width: 992px) {
+
   .about-heading {
-    font-size: 4rem;
+    font-size: 2.6rem;
   }
+
   .about-content {
-    font-size: 1.75rem;
-    padding: 2rem;
+    font-size: 1.05rem;
+    padding: 1.8rem;
   }
-  
+
 }
+
 
 /* ===== Tablet (≤768px) ===== */
 @media (max-width: 768px) {
+
   .about-heading {
-    font-size: 3rem;
+    font-size: 2.2rem;
   }
+
   .about-content {
-    font-size: 1.5rem;
-    padding: 1.75rem;
+    font-size: 1rem;
+    padding: 1.5rem;
   }
 
   .about-section {
     background-image: url('https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/phone-bg/about-phone.png');
   }
+
 }
+
 
 /* ===== Phone (≤576px) ===== */
 @media (max-width: 576px) {
+
+  .about-section {
+    padding: 2rem 1rem;
+  }
+
   .about-heading {
-    font-size: 2.5rem;
+    font-size: 1.9rem;
   }
+
   .about-content {
-    font-size: 1.25rem;
-    padding: 1.25rem;
+    font-size: 0.95rem;
+    padding: 1.2rem;
+    max-width: 100%;
+    width: 100%;
+    line-height: 1.6;
   }
+
+  .about-content p {
+    text-align: left;
+  }
+
   .toggle-btn {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 3px;
   }
-  .about-content {
-  background: var(--overlay-bg);
-  backdrop-filter: blur(0px);
-  }
+
   .about-section {
     background: none;
   }
+
 }
 
-/* iOS Safari fallback for background */
-@supports (-webkit-touch-callout: none) {
-  .about-section,
-  .extras-section {
-    background-attachment: scroll !important;
-    background-position: center top !important;
+/* Collapsible mobile text */
+
+.about-extra {
+  max-height: none;
+}
+
+.about-toggle {
+  display: none;
+}
+
+
+/* MOBILE ONLY COLLAPSE */
+@media (max-width: 576px) {
+
+  .about-extra {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
   }
+
+  .about-extra.open {
+    max-height: 2000px;
+  }
+
+  .about-toggle {
+    display: block;
+    margin: 1rem auto 0 auto;
+    background: none;
+    border: none;
+    color: #FBA435;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
 }
