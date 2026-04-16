@@ -1,0 +1,80 @@
+.resume-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #0d0d0d;
+  overflow: hidden;
+}
+
+.resume-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: rgba(0, 0, 0, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.resume-back-btn,
+.resume-download-btn {
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.resume-back-btn {
+  color: #FBA435;
+  border: 1px solid rgba(251, 164, 53, 0.35);
+  background: transparent;
+}
+
+.resume-back-btn:hover {
+  background: rgba(251, 164, 53, 0.1);
+  border-color: #FBA435;
+  color: #FBA435;
+}
+
+.resume-download-btn {
+  color: #0d0d0d;
+  background: #FBA435;
+  border: 1px solid #FBA435;
+}
+
+.resume-download-btn:hover {
+  background: #ffba5c;
+  border-color: #ffba5c;
+  color: #0d0d0d;
+}
+
+.resume-viewer {
+  flex: 1;
+  overflow: hidden;
+}
+
+.resume-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+@media (max-width: 576px) {
+  .resume-toolbar {
+    padding: 0.6rem 1rem;
+  }
+
+  .resume-back-btn,
+  .resume-download-btn {
+    font-size: 0.65rem;
+    padding: 6px 12px;
+  }
+}

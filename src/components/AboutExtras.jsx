@@ -91,33 +91,21 @@ const games = [
 
 function AboutExtras() {
     const [enableMousewheel, setEnableMousewheel] = useState(false)
-    const [renderExtras, setRenderExtras] = useState(false)
-    useEffect(() => {
-    // Allow DOM to settle before rendering heavy elements
-    const timeout = setTimeout(() => setRenderExtras(true), 50)
-    return () => clearTimeout(timeout)
-  }, [])
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
             setEnableMousewheel(window.innerWidth >= 768)
-            const timeout = setTimeout(() => {
-              window.dispatchEvent(new Event('resize'))
-            }, 100)
         }
     }, [])
+
     useEffect(() => {
-    if (renderExtras) {
       gsap.from('.extras-section', {
         opacity: 0,
-        y: 30,
         duration: 0.8,
         ease: 'power3.out'
       })
-    }
-  }, [renderExtras])
+    }, [])
 
-  if (!renderExtras) return null
   return (
     <>
       <h2 className="extras-heading text-center mb-4">🎮 Games I Love</h2>
@@ -140,7 +128,13 @@ function AboutExtras() {
         {games.map((game, idx) => (
           <SwiperSlide key={idx}>
             <div className="game-card">
-              <img src={game.image} alt={game.title} className="game-img" />
+              <img
+                src={game.image}
+                alt={game.title}
+                className="game-img"
+                style={{ opacity: 0, transition: 'opacity 0.4s ease' }}
+                onLoad={e => { e.currentTarget.style.opacity = 1 }}
+              />
               <h5 className="game-title mt-2">{game.title}</h5>
             </div>
           </SwiperSlide>
@@ -176,7 +170,14 @@ function AboutExtras() {
           columnClassName="vsco-masonry-column"
         >
           {vscoImages.map((src, idx) => (
-            <img key={idx} src={src} alt={`VSCO ${idx}`} className="vsco-img" />
+            <img
+                key={idx}
+                src={src}
+                alt={`VSCO ${idx}`}
+                className="vsco-img"
+                style={{ opacity: 0, transition: 'opacity 0.4s ease' }}
+                onLoad={e => { e.currentTarget.style.opacity = 1 }}
+              />
           ))}
         </Masonry>
         <div className="text-center">

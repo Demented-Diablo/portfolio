@@ -281,7 +281,12 @@ function ProjectsAndSkills() {
         {projects.map((proj, idx) => (
           <SwiperSlide key={idx}>
             <div className="project-card" onClick={() => setActiveProject(proj)}>
-              <img src={proj.image} alt={proj.title} />
+              <img
+                src={proj.image}
+                alt={proj.title}
+                style={{ opacity: 0, transition: 'opacity 0.4s ease' }}
+                onLoad={e => { e.currentTarget.style.opacity = 1 }}
+              />
               <h3>{proj.title}</h3>
               <p className="click-to-know">Click to know more</p>
             </div>
@@ -296,7 +301,13 @@ function ProjectsAndSkills() {
         {activeProject && (
           <div className="overlay-content">
             <h2 className="overlay-title">{activeProject.title}</h2>
-            <img className="overlay-image" src={activeProject.image} alt={activeProject.title} />
+            <img
+                className="overlay-image"
+                src={activeProject.image}
+                alt={activeProject.title}
+                style={{ opacity: 0, transition: 'opacity 0.4s ease' }}
+                onLoad={e => { e.currentTarget.style.opacity = 1 }}
+              />
             <p className="project-description">{activeProject.description}</p>
 
             <div className="project-section">

@@ -1,18 +1,23 @@
 import React from 'react'
-import AboutExtras from '../components/AboutExtras.jsx' // adjust path if needed
+import AboutExtras from '../components/AboutExtras.jsx'
 import '../styles/AboutExtras.css'
-import { Link } from 'react-router-dom'
 
 function AboutExtrasPage() {
   return (
-    <div className="extras-section min-vh-100 text-white">
-      <div style={{ padding: '1rem', alignItems: 'center', textAlign: 'center' }}>
-        <Link to="/" className="toggle-btn">
-          ← Back to Portfolio
-        </Link>
+    <>
+      {/* Background lives here, completely outside the GSAP-animated element,
+          so transform on .extras-section never breaks position:fixed */}
+      <div className="extras-bg" aria-hidden="true" />
+
+      <div className="extras-section min-vh-100 text-white">
+        <div style={{ padding: '1rem', alignItems: 'center', textAlign: 'center' }}>
+          <a href="/" className="toggle-btn">
+            ← Back to Portfolio
+          </a>
+        </div>
+        <AboutExtras />
       </div>
-      <AboutExtras />
-    </div>
+    </>
   )
 }
 

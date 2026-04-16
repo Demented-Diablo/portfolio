@@ -1,17 +1,35 @@
+/* === Extras Background (fixed, separate from animated content) === */
+.extras-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url('https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images//zoomed%20out.png');
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .extras-bg {
+    background-image: url('https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/phone-bg/about-phone.png');
+  }
+}
+
+@media (max-width: 576px) {
+  .extras-bg {
+    display: none;
+  }
+}
+
 /* === Extras Section === */
 .extras-section {
   position: relative;
   min-height: 100vh;
-  background-image: url('https://dvdevoouslpfhrdiwakv.supabase.co/storage/v1/object/public/project-images/phone-bg/about-phone.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: scroll;
+  background: transparent;
   padding: 3rem 2rem;
   display: block;
   pointer-events: auto;
   overflow-x: hidden;
-  overflow-y: auto;
 }
 
 .extras-heading {
@@ -229,10 +247,6 @@
   .vsco-section {
     padding: 2rem 1rem;
   }
-  .extras-section{
-    background: none;
-  }
-
   .extras-heading,
   .vsco-heading {
     font-size: 1.75rem;

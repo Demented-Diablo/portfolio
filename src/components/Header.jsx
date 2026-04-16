@@ -57,24 +57,24 @@ function Header() {
 
             <li className="nav-item">
               {isOnHomePage ? (
-                <a className="nav-link" href="#about" onClick={() => setIsOpen(false)}>
-                  About
-                </a>
-              ) : (
-                <Link className="nav-link" to="/#about" onClick={() => setIsOpen(false)}>
-                  About
-                </Link>
-              )}
-            </li>
-
-            <li className="nav-item">
-              {isOnHomePage ? (
                 <a className="nav-link" href="#projects" onClick={() => setIsOpen(false)}>
                   Projects
                 </a>
               ) : (
                 <Link className="nav-link" to="/#projects" onClick={() => setIsOpen(false)}>
                   Projects
+                </Link>
+              )}
+            </li>
+
+            <li className="nav-item">
+              {isOnHomePage ? (
+                <a className="nav-link" href="#about" onClick={() => setIsOpen(false)}>
+                  About
+                </a>
+              ) : (
+                <Link className="nav-link" to="/#about" onClick={() => setIsOpen(false)}>
+                  About
                 </Link>
               )}
             </li>
