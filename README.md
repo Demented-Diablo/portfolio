@@ -2,7 +2,7 @@
 
 Personal portfolio website built with React and Vite. Showcases projects, skills, and a bit about who I am outside of code.
 
-**Live:** [gavinsharma.ca](https://gavinsharma.ca)
+**Live:** [gavin-sharma.com](https://gavin-sharma.com)
 
 ---
 
